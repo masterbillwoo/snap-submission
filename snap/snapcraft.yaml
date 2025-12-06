@@ -29,7 +29,7 @@ contact: https://pwoo.itch.io/rise-of-the-penguins-gb
 apps:
   rise-of-the-penguins-gb:
     command: bin/rise-of-the-penguins-gb
-    desktop: snap/gui/rise-of-the-penguins-gb.desktop
+    desktop: usr/share/applications/rise-of-the-penguins-gb.desktop
     plugs:
       - x11
       - wayland
@@ -61,3 +61,10 @@ parts:
       - libxi6
       - libxinerama1
       - libxrandr2
+
+  desktop-file:
+    plugin: dump
+    source: snap/gui
+    organize:
+      icon.png: usr/share/icons/hicolor/256x256/apps/rise-of-the-penguins-gb.png
+      rise-of-the-penguins-gb.desktop: usr/share/applications/rise-of-the-penguins-gb.desktop
