@@ -30,6 +30,8 @@ apps:
   rise-of-the-penguins-gb:
     command: bin/rise-of-the-penguins-gb
     desktop: usr/share/applications/rise-of-the-penguins-gb.desktop
+    environment:
+      LD_LIBRARY_PATH: $SNAP/bin:$LD_LIBRARY_PATH
     plugs:
       - x11
       - wayland
@@ -38,6 +40,9 @@ apps:
       - joystick
       - home
       - network
+      - desktop
+      - desktop-legacy
+      - gsettings
 
 parts:
   rise-of-the-penguins-gb:
@@ -47,10 +52,8 @@ parts:
       "rise of the penguins gb.x86_64": bin/rise-of-the-penguins-gb
       "rise of the penguins gb.pck": bin/rise-of-the-penguins-gb.pck
       "libgodotsteam.linux.template_release.x86_64.so": bin/libgodotsteam.linux.template_release.x86_64.so
-      "libgodot_boy.linux.x86_64.so": bin/libgodot_boy.linux.x86_64.so
+      "libgodot_boy.linux.x86_64.so": bin/addons/godot_boy/libgodot_boy.linux.x86_64.so
       "libsteam_api.so": bin/libsteam_api.so
-    stage:
-      - bin/*
     stage-packages:
       - libgl1
       - libglu1-mesa
@@ -61,6 +64,10 @@ parts:
       - libxi6
       - libxinerama1
       - libxrandr2
+      - libxrender1
+      - libxfixes3
+      - mesa-utils
+      - libgles2
 
   desktop-file:
     plugin: dump
