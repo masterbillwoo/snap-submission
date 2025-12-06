@@ -1,0 +1,63 @@
+name: rise-of-the-penguins-gb
+title: Rise of the Penguins GB
+version: '1.0.0'
+summary: A retro-style Game Boy Color adventure featuring penguins
+description: |
+  Rise of the Penguins GB is a charming retro-style adventure game 
+  inspired by classic Game Boy titles. Guide your penguin hero through 
+  challenging levels filled with puzzles and action.
+  
+  Features:
+  - Authentic Game Boy Color aesthetic
+  - Challenging platforming gameplay
+  - Full controller support
+  - Multiple language support
+
+grade: stable
+confinement: strict
+base: core22
+
+architectures:
+  - build-on: amd64
+
+icon: snap/gui/icon.png
+license: Proprietary
+
+website: https://pwoo.itch.io/rise-of-the-penguins-gb
+contact: https://pwoo.itch.io/rise-of-the-penguins-gb
+
+apps:
+  rise-of-the-penguins-gb:
+    command: bin/rise-of-the-penguins-gb
+    desktop: snap/gui/rise-of-the-penguins-gb.desktop
+    plugs:
+      - x11
+      - wayland
+      - opengl
+      - audio-playback
+      - joystick
+      - home
+      - network
+
+parts:
+  rise-of-the-penguins-gb:
+    plugin: dump
+    source: .
+    organize:
+      "rise of the penguins gb.x86_64": bin/rise-of-the-penguins-gb
+      "rise of the penguins gb.pck": bin/rise-of-the-penguins-gb.pck
+      "libgodotsteam.linux.template_release.x86_64.so": bin/libgodotsteam.linux.template_release.x86_64.so
+      "libgodot_boy.linux.x86_64.so": bin/libgodot_boy.linux.x86_64.so
+      "libsteam_api.so": bin/libsteam_api.so
+    stage:
+      - bin/*
+    stage-packages:
+      - libgl1
+      - libglu1-mesa
+      - libasound2
+      - libpulse0
+      - libx11-6
+      - libxcursor1
+      - libxi6
+      - libxinerama1
+      - libxrandr2
